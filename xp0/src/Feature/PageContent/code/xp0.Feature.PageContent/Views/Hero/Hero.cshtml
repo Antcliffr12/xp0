@@ -1,0 +1,78 @@
+﻿@using Glass.Mapper.Sc.Web.Mvc
+
+@model xp0.Feature.PageContent.Models.Hero.IImageHero
+
+
+@{
+    var ctaLinkCount = 4; // TODO: get value from model
+    var overlayClass = Model.Links.Any() ? "rvt-p-bottom-none" : string.Empty;
+}
+
+
+<div class="iu-feature-hero-imageherooverlay xdefault-layout-margin-bottom">
+
+    <div class="overlay">
+        <div class="default-layout-margin-expanded">
+            @Html.Glass().RenderImage(x => x.Image, new { @class = "default-layout-responsive-image" }, isEditable: true)
+        </div>
+
+        <div class="overlay-content overlay-white-and-black-theme rvt-p-all-md @overlayClass">
+            <h1>@Html.Glass().Editable(x => x.PageTitle)</h1>
+            <p>@Html.Glass().Editable(x => x.PageSummary)</p>
+
+            @if (Model.Links.Any())
+            {
+                <div>
+                    @foreach (var link in Model.Links.Take(ctaLinkCount))
+                    {
+                        if (link.Link != null && !string.IsNullOrEmpty(link.Link.Url))
+                        {
+                            <span class="cta-link rvt-m-right-lg">
+                                <span class="svg-rounded">
+                                    <svg class="default-layout-svg-icon">
+                                        <use xlink:href="~/FrontEnd/Images/rvt-icons.svg#rvt-icon-chevron-right"></use>
+                                    </svg>
+                                </span>
+
+                                @Html.Glass().RenderLink(link, x => x.Link, new { @class = "default-layout-bold-link" }, isEditable: true)
+                            </span>
+                        }
+
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="collapsed">
+        <div class="default-layout-margin-expanded">
+            @Html.Glass().RenderImage(x => x.Image, new { @class = "default-layout-responsive-image" }, isEditable: true)
+        </div>
+
+        <div class="rvt-p-top-sm">
+            <h1>@Html.Glass().Editable(x => x.PageTitle)</h1>
+            <p>@Html.Glass().Editable(x => x.PageSummary)</p>
+
+            @if (Model.Links.Any())
+            {
+                <div class="cta-blue-and-white-theme">
+                    @foreach (var link in Model.Links.Take(ctaLinkCount))
+                    {
+                        <p>
+                            <span class="svg-rounded">
+                                <svg class="default-layout-svg-icon">
+                                    <use xlink:href="~/FrontEnd/Images/rvt-icons.svg#rvt-icon-chevron-right"></use>
+                                </svg>
+                            </span>
+
+                            @Html.Glass().RenderLink(link, x => x.Link, new { @class = "default-layout-bold-link" }, isEditable: true)
+                        </p>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+

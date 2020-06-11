@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>
+        @Html.Sitecore().Field("MetaTitle", new
+        {
+            DisableWebEdit = true
+        })
+    </title>
+    <link href="/default.css" rel="stylesheet" />
+    <link href="~/Assets/bundles/foundation.css" rel="stylesheet" />
+    <link href="/Assets/bundles/styles.css" rel="stylesheet" />
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <!-- Navigation -->
+        @Html.Sitecore().Placeholder("header")
+    </header>
+    <main id="site-content">
+        @Html.Sitecore().Placeholder("main")
+    </main>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+    <script src="~/Assets/bundles/foundation.js"></script>
+</body>
+</html>
